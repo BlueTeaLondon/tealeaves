@@ -4,17 +4,17 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
   before(:all) do
     drop_dummy_database
     clear_tmp_directory
-    run_suspenders
+    run_tealeaves
     setup_app_dependencies
   end
 
   it "uses custom Gemfile" do
     gemfile_file = IO.read("#{project_path}/Gemfile")
     expect(gemfile_file).to match(
-      /^ruby "#{Suspenders::RUBY_VERSION}"$/o
+      /^ruby "#{Tealeaves::RUBY_VERSION}"$/o
     )
     expect(gemfile_file).to match(
-      /^gem "rails", "#{Suspenders::RAILS_VERSION}"$/o
+      /^gem "rails", "#{Tealeaves::RAILS_VERSION}"$/o
     )
   end
 
@@ -34,7 +34,7 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
     end
   end
 
-  it "creates .ruby-version from Suspenders .ruby-version" do
+  it "creates .ruby-version from Tealeaves .ruby-version" do
     ruby_version_file = IO.read("#{project_path}/.ruby-version")
 
     expect(ruby_version_file).to eq "#{RUBY_VERSION}\n"

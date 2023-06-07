@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe Suspenders::Actions::ExpandJson do
+RSpec.describe Tealeaves::Actions::ExpandJson do
   let(:destination_root) { TestPaths.root_path.join("tmp") }
   let(:destination_file_name) { "app.json" }
   let(:destination_path) { File.join(destination_root, destination_file_name) }

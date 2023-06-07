@@ -4,7 +4,7 @@ RSpec.describe "Heroku", type: :feature do
   context "--heroku" do
     before(:all) do
       clean_up
-      run_suspenders("--heroku=true")
+      run_tealeaves("--heroku=true")
       setup_app_dependencies
     end
 
@@ -42,7 +42,7 @@ RSpec.describe "Heroku", type: :feature do
   context "--heroku with region flag" do
     before(:all) do
       clean_up
-      run_suspenders(%(--heroku=true --heroku-flags="--region eu"))
+      run_tealeaves(%(--heroku=true --heroku-flags="--region eu"))
       setup_app_dependencies
     end
 

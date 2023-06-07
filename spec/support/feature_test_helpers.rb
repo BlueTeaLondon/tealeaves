@@ -11,10 +11,10 @@ module FeatureTestHelpers
     FileUtils.rm_rf(project_path)
   end
 
-  def run_suspenders(arguments = nil)
+  def run_tealeaves(arguments = nil)
     run_in_tmp do
       EnvPath.prepend_env_path!(fake_bin_path)
-      command = "#{suspenders_bin} #{APP_NAME} #{arguments}"
+      command = "#{tealeaves_bin} #{APP_NAME} #{arguments}"
 
       with_revision_for_honeybadger do
         result = `#{command}`
@@ -29,11 +29,11 @@ module FeatureTestHelpers
     end
   end
 
-  def run_suspenders!(*args)
-    run_suspenders(*args) do |command|
+  def run_tealeaves!(*args)
+    run_tealeaves(*args) do |command|
       if $CHILD_STATUS.exitstatus.nonzero?
         raise <<~MESSAGE
-          Suspenders failed. To debug, generate an app with:
+          Tealeaves failed. To debug, generate an app with:
 
           #{command}
 
@@ -82,9 +82,9 @@ module FeatureTestHelpers
     end
   end
 
-  def suspenders_help_command
+  def tealeaves_help_command
     run_in_tmp do
-      debug `#{suspenders_bin} -h`
+      debug `#{tealeaves_bin} -h`
     end
   end
 
@@ -110,8 +110,8 @@ module FeatureTestHelpers
 
   private
 
-  def suspenders_bin
-    File.join(root_path, "bin", "suspenders")
+  def tealeaves_bin
+    File.join(root_path, "bin", "tealeaves")
   end
 
   def system_rails_bin
@@ -128,8 +128,8 @@ module FeatureTestHelpers
 
   def commit_all
     with_env("HOME", tmp_path) do
-      debug `git config user.email suspenders@example.com`
-      debug `git config user.name "Suspenders Boy"`
+      debug `git config user.email tealeaves@example.com`
+      debug `git config user.name "Tealeaves Boy"`
       debug `git add .`
       debug `git commit -m 'Initial commit'`
     end

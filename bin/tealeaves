@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+require 'pathname'
+
+source_path = (Pathname.new(__FILE__).dirname + '../lib').expand_path
+$LOAD_PATH << source_path
+
+activate_rails_version = ->(rails_version) do
+  rails_bin_path = Gem.activate_bin_path("railties", "rails", rails_version)
+  rails_path = File.expand_path("../..", rails_bin_path)
+  $LOAD_PATH.unshift(rails_path)
+end
+
+if str = ARGV.first
+  str = str.b[/\A_(.*)_\z/, 1]
+
+  if str && Gem::Version.correct?(str)
+    rails_version = str
+    ARGV.shift
+
+    begin
+      activate_rails_version.call(rails_version)
+    rescue Gem::GemNotFoundException
+      abort "Sealeaves error: Unable to find Rails version #{rails_version}"
+    end
+  else
+    require "tealeaves/version"
+
+    spec = Gem::Specification.find_by_name("rails", Tealeaves::RAILS_VERSION)
+
+    activate_rails_version.call(spec.version.to_s)
+  end
+end
+
+require "tealeaves"
+
+if ARGV.empty?
+  puts "Please provide a path for the new application"
+  puts
+  puts "See --help for more info"
+  exit 0
+elsif ["-v", "--version"].include? ARGV[0]
+  puts Tealeaves::VERSION
+  exit 0
+end
+
+templates_root = File.expand_path(File.join("..", "templates"), File.dirname(__FILE__))
+Tealeaves::AppGenerator.source_root templates_root
+Tealeaves::AppGenerator.source_paths << Rails::Generators::AppGenerator.source_root << templates_root
+
+Tealeaves::AppGenerator.start

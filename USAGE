@@ -1,13 +1,13 @@
 Description:
-    Suspenders is a Rails template with thoughtbot standard
-    defaults, ready to deploy to Heroku.
+Tealeaves is a Rails template with BlueTea standard
+defaults, ready to deploy to Heroku.
 
     For full details on the changes we've made compared to
     a vanilla Rails app, check our GitHub project:
-        https://github.com/thoughtbot/suspenders
+        https://github.com/bluetealondon/tealeaves
 
 Example:
-    suspenders ~/Code/weblog
+tealeaves ~/Code/weblog
 
     This generates a Rails installation in ~/Code/weblog configured
     with our preferred defaults.

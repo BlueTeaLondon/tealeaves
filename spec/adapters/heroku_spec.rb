@@ -1,6 +1,6 @@
 require "spec_helper"
 
-module Suspenders
+module Tealeaves
   module Adapters
     RSpec.describe Heroku do
       it "sets the heroku remotes" do

@@ -1,1 +1,1 @@
-gem "suspenders", path: File.expand_path("../..", __dir__)
+gem "tealeaves", path: File.expand_path("../..", __dir__)
