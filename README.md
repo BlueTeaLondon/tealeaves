@@ -3,10 +3,10 @@
 [![Build Status](https://github.com/thoughtbot/tealeaves/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/thoughtbot/tealeaves/actions)
 [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-Tealeaves is the base Rails application used at
-[thoughtbot](https://thoughtbot.com/).
+TeaLeaves is the base Rails application used at
+[bluetea](https://tea.blue/).
 
-![Tealeaves boy](http://media.tumblr.com/1TEAMALpseh5xzf0Jt6bcwSMo1_400.png)
+This project was originally forked from [Suspenders](https://github.com/thoughtbot/suspenders) but has been heavily modified for our own internal usage
 
 ## Installation
 
