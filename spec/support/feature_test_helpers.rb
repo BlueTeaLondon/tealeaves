@@ -16,7 +16,7 @@ module FeatureTestHelpers
       EnvPath.prepend_env_path!(fake_bin_path)
       command = "#{tealeaves_bin} #{APP_NAME} #{arguments}"
 
-      with_revision_for_honeybadger do
+      with_revision_for_appsignal do
         result = `#{command}`
         debug result
       end
@@ -56,7 +56,7 @@ module FeatureTestHelpers
     run_in_tmp do
       EnvPath.prepend_env_path!(fake_bin_path)
 
-      with_revision_for_honeybadger do
+      with_revision_for_appsignal do
         debug `#{system_rails_bin} new #{APP_NAME} --skip-spring -d postgresql -m #{rails_template_path}`
       end
 
@@ -68,7 +68,7 @@ module FeatureTestHelpers
 
   def generate(generator)
     run_in_project do
-      with_revision_for_honeybadger do
+      with_revision_for_appsignal do
         debug `#{project_rails_bin} generate #{generator}`
       end
     end
@@ -76,7 +76,7 @@ module FeatureTestHelpers
 
   def destroy(generator)
     run_in_project do
-      with_revision_for_honeybadger do
+      with_revision_for_appsignal do
         debug `#{project_rails_bin} destroy #{generator}`
       end
     end
@@ -149,7 +149,7 @@ module FeatureTestHelpers
     end
   end
 
-  def with_revision_for_honeybadger
+  def with_revision_for_appsignal
     with_env("HEROKU_SLUG_COMMIT", 1) do
       yield
     end

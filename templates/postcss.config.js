@@ -1,8 +1,9 @@
 module.exports = {
   plugins: [
-    require('postcss-nesting'),
-    require('autoprefixer'),
-    require('postcss-normalize')
+    require("postcss-import"),
+    require("tailwindcss"),
+    require("autoprefixer"),
+    require("postcss-nested"),
+    require("postcss-flexbugs-fixes"),
   ],
-}
-
+};

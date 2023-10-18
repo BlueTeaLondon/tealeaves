@@ -31,16 +31,16 @@ module Tealeaves
     class_option :skip_system_test,
       type: :boolean, default: true, desc: "Skip system test files"
 
-    class_option :css,
-      type: :string, default: "postcss", aliases: "-c", desc: "Choose CSS processor"
-
     def finish_template
       invoke :tealeaves_customization
       super
     end
 
     def leftovers
-      generate("tealeaves:stylesheet_base") unless options[:api] || options[:css] != "postcss"
+      unless options[:api]
+        generate("tealeaves:stylesheet_base")
+        generate("tealeaves:typescript")
+      end
       invoke :outro
     end
 
@@ -48,7 +48,6 @@ module Tealeaves
       invoke :customize_gemfile
       invoke :setup_development_environment
       invoke :setup_production_environment
-      invoke :setup_secret_token
       invoke :configure_app
       invoke :copy_miscellaneous_files
       invoke :setup_database
@@ -86,6 +85,7 @@ module Tealeaves
       build :raise_on_unpermitted_parameters
       build :provide_setup_script
       build :provide_yarn_script
+      build :provide_npm_script
       build :configure_generators
       build :configure_i18n_for_missing_translations
       build :configure_quiet_assets
@@ -94,11 +94,6 @@ module Tealeaves
     def setup_production_environment
       say "Setting up the production environment"
       build :setup_asset_host
-    end
-
-    def setup_secret_token
-      say "Moving secret token out of version control"
-      build :setup_secret_token
     end
 
     def configure_app
@@ -115,7 +110,7 @@ module Tealeaves
         build :set_heroku_remotes
         build :set_heroku_rails_secrets
         build :set_heroku_application_host
-        build :set_heroku_honeybadger_env
+        build :set_heroku_appsignal_env
         build :set_heroku_backup_schedule
         build :set_heroku_buildpacks
         build :create_heroku_pipeline
@@ -152,16 +147,15 @@ module Tealeaves
       generate("tealeaves:runner")
       generate("tealeaves:profiler")
       generate("tealeaves:json")
-      generate("tealeaves:static")
       generate("tealeaves:testing")
-      generate("tealeaves:ci")
-      generate("tealeaves:js_driver")
-      generate("tealeaves:forms") unless options[:api]
+      # generate("tealeaves:ci")
+      # generate("tealeaves:js_driver")
+      generate("tealeaves:forms")
       generate("tealeaves:db_optimizations")
       generate("tealeaves:factories")
       generate("tealeaves:lint")
       generate("tealeaves:jobs")
-      generate("tealeaves:analytics")
+      # generate("tealeaves:analytics")
       generate("tealeaves:inline_svg")
       generate("tealeaves:advisories")
     end
@@ -183,7 +177,7 @@ module Tealeaves
 
     def outro
       say "\nCongratulations! You just pulled our tealeaves."
-      say honeybadger_outro
+      say appsignal_outro
     end
 
     def self.banner
@@ -202,14 +196,8 @@ module Tealeaves
 
     private
 
-    def honeybadger_outro
-      "Run 'bundle exec honeybadger heroku install' with your API key#{honeybadger_message_suffix}."
-    end
-
-    def honeybadger_message_suffix
-      if options[:heroku]
-        " unless you're using the Heroku Honeybadger add-on"
-      end
+    def appsignal_outro
+      "Run 'bundle exec appsignal install' with your API key"
     end
   end
 end

@@ -11,9 +11,9 @@ module Tealeaves
       prepend_template_to_file(test_helper_file, "partials/ci_simplecov.rb")
     end
 
-    def configure_ci
-      template "circle.yml.erb", "circle.yml"
-    end
+    # def configure_ci
+    #   template "circle.yml.erb", "circle.yml"
+    # end
 
     private
 

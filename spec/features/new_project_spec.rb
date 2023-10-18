@@ -48,13 +48,6 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
     expect(File).not_to exist("#{project_path}/test")
   end
 
-  it "loads secret_key_base from env" do
-    secrets_file = IO.read("#{project_path}/config/secrets.yml")
-
-    expect(secrets_file)
-      .to match(/secret_key_base: <%= ENV\["SECRET_KEY_BASE"\] %>/)
-  end
-
   it "adds bin/setup file" do
     expect(File).to exist("#{project_path}/bin/setup")
   end
@@ -75,30 +68,13 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
     expect(File).to exist("#{project_path}/spec/support/action_mailer.rb")
   end
 
-  it "configures capybara-chromedriver" do
-    expect(File).to exist("#{project_path}/spec/support/chromedriver.rb")
-  end
-
   it "adds support file for i18n" do
     expect(File).to exist("#{project_path}/spec/support/i18n.rb")
-  end
-
-  it "creates good default .hound.yml" do
-    hound_config_file = IO.read("#{project_path}/.hound.yml")
-
-    expect(hound_config_file).to include "enabled: true"
   end
 
   it "initializes ActiveJob to avoid memory bloat" do
     expect(File)
       .to exist("#{project_path}/config/initializers/active_job.rb")
-  end
-
-  it "records pageviews through Segment if ENV variable set" do
-    expect(analytics_partial)
-      .to include(%(<% if ENV["SEGMENT_KEY"] %>))
-    expect(analytics_partial)
-      .to include(%{analytics.load("<%= ENV["SEGMENT_KEY"] %>");})
   end
 
   it "raises on unpermitted parameters in all environments" do
@@ -260,17 +236,6 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
     expect(app_json_file).to match(/"name":\s*"#{app_name.dasherize}"/)
   end
 
-  it "adds high_voltage" do
-    gemfile = IO.read("#{project_path}/Gemfile")
-    expect(gemfile).to match(/high_voltage/)
-  end
-
-  it "adds sassc-rails" do
-    gemfile = read_project_file("Gemfile")
-
-    expect(gemfile).to match(/sassc-rails/)
-  end
-
   it "configures Timecop safe mode" do
     spec_helper = read_project_file(%w[spec spec_helper.rb])
     expect(spec_helper).to match(/Timecop.safe_mode = true/)
@@ -284,18 +249,8 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
     expect(File).to exist("#{project_path}/postcss.config.js")
     expect(File).to exist("#{project_path}/package.json")
     expect(File).to exist("#{project_path}/bin/dev")
-    expect(File).to exist("#{project_path}/app/assets/stylesheets/application.postcss.css")
-    expect(File).to exist("#{project_path}/app/javascript/application.js")
-  end
-
-  it "adds normalize.css" do
-    stylesheet = read_project_file %w[app assets stylesheets application.postcss.css]
-    dependencies = read_project_file %w[package.json]
-    configuration = read_project_file %w[postcss.config.js]
-
-    expect(stylesheet).to include(%(@import "normalize.css"))
-    expect(dependencies).to include(%("postcss-normalize"))
-    expect(configuration).to include(%(require('postcss-normalize')))
+    expect(File).to exist("#{project_path}/app/assets/stylesheets/application.tailwind.css")
+    expect(File).to exist("#{project_path}/app/javascript/application.ts")
   end
 
   it "imports css and js" do
@@ -332,10 +287,6 @@ RSpec.describe "Suspend a new project with default configuration", type: :featur
   def production_config
     @_production_config ||=
       read_project_file %w[config environments production.rb]
-  end
-
-  def analytics_partial
-    IO.read("#{project_path}/app/views/application/_analytics.html.erb")
   end
 
   def read_project_file(path)

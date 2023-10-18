@@ -7,24 +7,20 @@ end
 
 ruby "<%= Tealeaves::RUBY_VERSION %>"
 
-<% if options[:api] %>
-gem "sprockets", "< 4"
-<% end %>
-
+gem "appsignal"
 gem "bootsnap", require: false
 gem "cssbundling-rails"
-gem "honeybadger"
+gem "discard"
+gem "draper"
 gem "jsbundling-rails"
 gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "<%= Tealeaves::RAILS_VERSION %>"
 gem "recipient_interceptor"
-gem "sassc-rails"
-gem "skylight"
+gem "rails-healthcheck"
 gem "sprockets-rails"
 gem "stimulus-rails"
-gem "title"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 
@@ -40,6 +36,7 @@ group :development, :test do
 end
 
 group :test do
+  gem "database_cleaner-active_record"
   gem "formulaic"
   gem "launchy"
   gem "timecop"

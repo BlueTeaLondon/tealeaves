@@ -20,7 +20,7 @@ if str = ARGV.first
     begin
       activate_rails_version.call(rails_version)
     rescue Gem::GemNotFoundException
-      abort "Sealeaves error: Unable to find Rails version #{rails_version}"
+      abort "Tealeaves error: Unable to find Rails version #{rails_version}"
     end
   else
     require "tealeaves/version"

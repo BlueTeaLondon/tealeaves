@@ -37,10 +37,10 @@ module Tealeaves
         end
       end
 
-      def set_heroku_honeybadger_env
+      def set_heroku_appsignal_env
         %w[staging production].each do |environment|
           run_toolbelt_command(
-            "config:add HONEYBADGER_ENV=#{environment}",
+            "config:add APPSIGNAL_APP_ENV=#{environment}",
             environment
           )
         end

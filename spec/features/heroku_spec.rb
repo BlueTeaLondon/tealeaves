@@ -20,7 +20,7 @@ RSpec.describe "Heroku", type: :feature do
       )
       %w[staging production].each do |env|
         expect(FakeHeroku).to have_configured_vars(env, "APPLICATION_HOST")
-        expect(FakeHeroku).to have_configured_vars(env, "HONEYBADGER_ENV")
+        expect(FakeHeroku).to have_configured_vars(env, "APPSIGNAL_APP_ENV")
       end
       expect(FakeHeroku).to have_setup_pipeline_for(app_name)
 

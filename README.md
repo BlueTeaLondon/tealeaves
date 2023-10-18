@@ -34,22 +34,21 @@ generated projectname/Gemfile.
 
 It includes application gems like:
 
+- [Discard](https://github.com/jhawthorn/discard) for managing soft deletion
 - [Sidekiq](https://github.com/mperham/sidekiq) for background
   processing
-- [High Voltage](https://github.com/thoughtbot/high_voltage) for static pages
-- [Honeybadger](https://www.honeybadger.io/?affiliate=A43uwl) for exception notification
+- [AppSignal](https://www.appsignal.com) for exception notification
 - [Oj](http://www.ohler.com/oj/)
 - [Postgres](https://github.com/ged/ruby-pg) for access to the Postgres database
 - [Rack Canonical Host](https://github.com/tylerhunt/rack-canonical-host) to
   ensure all requests are served from the same domain
 - [Rack Timeout](https://github.com/heroku/rack-timeout) to abort requests that are
   taking too long
+- [Rails healthcheck]() for adding a healthcheck endpoint
 - [Recipient Interceptor](https://github.com/croaky/recipient_interceptor) to
   avoid accidentally sending emails to real people from staging
 - [Simple Form](https://github.com/plataformatec/simple_form) for form markup
   and style
-- [Skylight](https://www.skylight.io/) for monitoring performance
-- [Title](https://github.com/calebthompson/title) for storing titles in
   translations
 
 And development gems like:

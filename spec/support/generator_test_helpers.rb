@@ -7,6 +7,7 @@ module GeneratorTestHelpers
 
   def invoke!(klass, *args, **kwargs, &block)
     instance_eval(&block) if block
+
     call_generator!(new_invoke_generator(klass, *args, **kwargs))
   end
 
@@ -66,6 +67,6 @@ module GeneratorTestHelpers
   end
 
   def destroy_fake_app_dir
-    FileUtils.rm_rf tmp_path.join(APP_NAME)
+    # FileUtils.rm_rf tmp_path.join(APP_NAME)
   end
 end

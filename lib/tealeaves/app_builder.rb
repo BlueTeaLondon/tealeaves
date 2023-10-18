@@ -12,7 +12,7 @@ module Tealeaves
       :create_staging_heroku_app,
       :set_heroku_application_host,
       :set_heroku_backup_schedule,
-      :set_heroku_honeybadger_env,
+      :set_heroku_appsignal_env,
       :set_heroku_rails_secrets,
       :set_heroku_remotes,
       :set_heroku_buildpacks
@@ -80,6 +80,11 @@ module Tealeaves
       run "chmod a+x bin/yarn"
     end
 
+    def provide_npm_script
+      template "bin_npm", "bin/npm", force: true
+      run "chmod a+x bin/npm"
+    end
+
     def configure_generators
       config = <<-RUBY
 
@@ -121,10 +126,6 @@ module Tealeaves
       EOD
 
       configure_environment("production", config)
-    end
-
-    def setup_secret_token
-      template "secrets.yml", "config/secrets.yml", force: true
     end
 
     def disallow_wrapping_parameters

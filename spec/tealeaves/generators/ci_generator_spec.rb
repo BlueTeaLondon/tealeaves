@@ -10,13 +10,13 @@ RSpec.describe Tealeaves::CiGenerator, type: :generator do
       end
     end
 
-    it "creates a circle.yml file" do
-      with_fake_app do
-        invoke! Tealeaves::CiGenerator
+    # it "creates a circle.yml file" do
+    #   with_fake_app do
+    #     invoke! Tealeaves::CiGenerator
 
-        expect("circle.yml").to exist_as_a_file
-      end
-    end
+    #     expect("circle.yml").to exist_as_a_file
+    #   end
+    # end
 
     context "when it is an rspec project" do
       it "configures spec_helper.rb with SimpleCov" do
@@ -60,13 +60,13 @@ RSpec.describe Tealeaves::CiGenerator, type: :generator do
       end
     end
 
-    it "destroys the circle.yml file" do
-      with_fake_app do
-        invoke_then_revoke! Tealeaves::CiGenerator
+    # it "destroys the circle.yml file" do
+    #   with_fake_app do
+    #     invoke_then_revoke! Tealeaves::CiGenerator
 
-        expect("circle.yml").not_to exist_as_a_file
-      end
-    end
+    #     expect("circle.yml").not_to exist_as_a_file
+    #   end
+    # end
 
     context "when it is an rspec project" do
       it "removes SimpleCov configuration from spec_helper.rb" do

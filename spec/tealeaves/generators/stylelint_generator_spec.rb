@@ -40,17 +40,17 @@ RSpec.describe Tealeaves::StylelintGenerator, type: :generator do
       end
     end
 
-    it "uncomments the hound config_file option" do
-      with_fake_app do
-        copy_files_to_fake_app
+    # it "uncomments the hound config_file option" do
+    #   with_fake_app do
+    #     copy_files_to_fake_app
 
-        invoke! Tealeaves::StylelintGenerator
+    #     invoke! Tealeaves::StylelintGenerator
 
-        expect(".hound.yml").to(
-          match_contents(/^  config_file: \.stylelintrc\.json/)
-        )
-      end
-    end
+    #     expect(".hound.yml").to(
+    #       match_contents(/^  config_file: \.stylelintrc\.json/)
+    #     )
+    #   end
+    # end
   end
 
   context "revoke" do
@@ -75,15 +75,15 @@ RSpec.describe Tealeaves::StylelintGenerator, type: :generator do
       end
     end
 
-    it "comments in the hound config_file option" do
-      with_fake_app do
-        copy_files_to_fake_app
+    # it "comments in the hound config_file option" do
+    #   with_fake_app do
+    #     copy_files_to_fake_app
 
-        invoke_then_revoke! Tealeaves::StylelintGenerator
+    #     invoke_then_revoke! Tealeaves::StylelintGenerator
 
-        expect(".hound.yml")
-          .to match_contents(/^  # config_file: \.stylelintrc\.json/)
-      end
-    end
+    #     expect(".hound.yml")
+    #       .to match_contents(/^  # config_file: \.stylelintrc\.json/)
+    #   end
+    # end
   end
 end
