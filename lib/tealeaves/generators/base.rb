@@ -32,6 +32,10 @@ module Tealeaves
         Rails.app_class.module_parent_name.demodulize.underscore.dasherize
       end
 
+      def app_name_module
+        Rails.app_class.module_parent_name
+      end
+
       def empty_directory_with_keep_file(destination)
         empty_directory(destination, {})
         keep_file(destination)

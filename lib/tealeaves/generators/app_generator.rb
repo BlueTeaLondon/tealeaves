@@ -158,6 +158,7 @@ module Tealeaves
       # generate("tealeaves:analytics")
       generate("tealeaves:inline_svg")
       generate("tealeaves:advisories")
+      generate("tealeaves:configuration")
     end
 
     def generate_deployment_default

@@ -67,11 +67,6 @@ And development gems like:
 
 And testing gems like:
 
-- [Capybara](https://github.com/jnicklas/capybara) and
-  [Google Chromedriver]
-  integration testing
-- [capybara_accessibility_audit](https://github.com/thoughtbot/capybara_accessibility_audit) and
-  [capybara_accessible_selectors](https://github.com/citizensadvice/capybara_accessible_selectors)
 - [Factory Bot](https://github.com/thoughtbot/factory_bot) for test data
 - [Formulaic](https://github.com/thoughtbot/formulaic) for integration testing
   HTML forms
@@ -79,7 +74,6 @@ And testing gems like:
 - [RSpec Mocks](https://github.com/rspec/rspec-mocks) for stubbing and spying
 - [Shoulda Matchers](https://github.com/thoughtbot/shoulda-matchers) for common
   RSpec matchers
-- [Timecop](https://github.com/travisjeffery/timecop) for testing time
 
 ## Other goodies
 
@@ -95,8 +89,6 @@ Tealeaves also comes with:
 - [t() and l() in specs without prefixing with I18n][i18n]
 - An automatically-created `SECRET_KEY_BASE` environment variable in all
   environments
-- Configuration for [CircleCI][circle] Continuous Integration (tests)
-- Configuration for [Hound][hound] Continuous Integration (style)
 - Configuration for [stylelint][stylelint]
 - The analytics adapter [Segment][segment] (and therefore config for Google
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
@@ -127,7 +119,7 @@ This:
 
 - Creates a staging and production Heroku app
 - Sets them as `staging` and `production` Git remotes
-- Configures staging with `HONEYBADGER_ENV` environment variable set
+- Configures staging with `APPSIGNAL_APP_ENV` environment variable set
   to `staging`
 - Creates a [Heroku Pipeline] for review apps
 - Schedules automated backups for 10AM UTC for both `staging` and `production`
@@ -177,11 +169,6 @@ Snow Leopard (OS X 10.6).
 Use [Command Line Tools for Xcode](https://developer.apple.com/downloads/index.action)
 for Lion (OS X 10.7) or Mountain Lion (OS X 10.8).
 
-We use [Google Chromedriver] for full-stack JavaScript integration testing. It
-requires Google Chrome or Chromium.
-
-[Google Chromedriver]: https://sites.google.com/a/chromium.org/chromedriver/home
-
 PostgreSQL needs to be installed and running for the `db:create` rake task.
 
 Redis needs to be installed and running for Sidekiq
@@ -189,36 +176,4 @@ Redis needs to be installed and running for Sidekiq
 ## Issues
 
 If you have problems, please create a
-[GitHub Issue](https://github.com/thoughtbot/tealeaves/issues).
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Thank you, [contributors]!
-
-[contributors]: https://github.com/thoughtbot/tealeaves/graphs/contributors
-
-## License
-
-Tealeaves is Copyright © 2008-2017 thoughtbot.
-It is free software,
-and may be redistributed under the terms specified in the [LICENSE] file.
-
-[LICENSE]: LICENSE
-
-## About thoughtbot
-
-[![thoughtbot][thoughtbot-logo]][thoughtbot]
-
-Tealeaves is maintained and funded by thoughtbot, inc.
-The names and logos for thoughtbot are trademarks of thoughtbot, inc.
-
-We love open source software!
-See [our other projects][community].
-We are [available for hire][hire].
-
-[thoughtbot]: https://thoughtbot.com?utm_source=github
-[thoughtbot-logo]: https://thoughtbot.com/brand_assets/93:44.svg
-[community]: https://thoughtbot.com/community?utm_source=github
-[hire]: https://thoughtbot.com?utm_source=github
+[GitHub Issue](https://github.com/bluetealondon/tealeaves/issues).

@@ -1,0 +1,12 @@
+# frozen_string_literal: true
+
+require "<%= app_name.underscore %>"
+
+#
+# Configuration option available can be found and added
+# in the `lib/<%= app_name.underscore %>.rb` file.
+#
+<%= app_name_module %>.configure do |config|
+  config.email_from_address = "noreply@<%= app_name.underscore %>.com"
+  config.host = ENV.fetch("APPLICATION_HOST", "localhost:3000")
+end

@@ -1,0 +1,27 @@
+# frozen_string_literal
+
+module <%= app_name_module %>
+
+  # The email address to be used as the sender of all emails
+  # sent from the system
+  mattr_accessor :email_from_address  
+  @@email_from_address = nil
+
+  # The hostname that the app is running on
+  mattr_accessor :host
+  @@host = nil
+
+
+  #
+  # Configure the application. This module will be yielded
+  # to the provided block.
+  #
+  #     <%= app_name_module %>.configure do |config|
+  #       config.email_from_address = "noreply@myapp.com"
+  #       config.host = "example.com"
+  #     end
+  #
+  def self.configure
+    yield self
+  end
+end

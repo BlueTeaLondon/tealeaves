@@ -17,7 +17,6 @@ const config = {
   entryPoints: entryPoints,
   outdir: path.join(process.cwd(), "app/assets/builds"),
   sourcemap: true,
-  define,
   loader: {
     ".svg": "text",
   },
