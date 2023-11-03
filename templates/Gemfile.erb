@@ -19,8 +19,9 @@ gem "rack-canonical-host"
 gem "rails", "<%= Tealeaves::RAILS_VERSION %>"
 gem "recipient_interceptor"
 gem "rails-healthcheck"
-gem "sprockets-rails"
+gem "propshaft"
 gem "stimulus-rails"
+gem "title"
 gem "turbo-rails"
 gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 
@@ -33,13 +34,12 @@ group :development, :test do
   gem "awesome_print"
   gem "pry-byebug"
   gem "pry-rails"
+  gem "dotenv-rails"
 end
 
 group :test do
   gem "database_cleaner-active_record"
   gem "formulaic"
-  gem "launchy"
-  gem "timecop"
   gem "webmock"
 end
 
