@@ -58,6 +58,8 @@ module Tealeaves
       copy_file "views/sessions/_form.html.erb", "app/views/sessions/_form.html.erb"
 
       copy_file "views/passwords/new.html.erb", "app/views/passwords/new.html.erb"
+      copy_file "views/passwords/create.html.erb", "app/views/passwords/create.html.erb"
+      copy_file "views/passwords/edit.html.erb", "app/views/passwords/edit.html.erb"
     end
   end
 end
