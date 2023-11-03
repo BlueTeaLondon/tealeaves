@@ -49,7 +49,7 @@ It includes application gems like:
   avoid accidentally sending emails to real people from staging
 - [Simple Form](https://github.com/plataformatec/simple_form) for form markup
   and style
-  translations
+- [Title](https://github.com/calebthompson/title) for storing titles in translations
 
 And development gems like:
 
@@ -94,6 +94,7 @@ Tealeaves also comes with:
   Analytics, Intercom, Facebook Ads, Twitter Ads, etc.)
 - [PostCSS Autoprefixer][autoprefixer] for CSS vendor prefixes
 - [PostCSS Normalize][normalize] for resetting browser styles
+- [Hero Icons][heroicon] for rendering icons from the HeroIcon icon set
 
 [setup]: https://robots.thoughtbot.com/bin-setup
 [compress]: https://robots.thoughtbot.com/content-compression-with-rack-deflater
@@ -106,6 +107,7 @@ Tealeaves also comes with:
 [segment]: https://segment.com
 [autoprefixer]: https://github.com/postcss/autoprefixer
 [normalize]: https://github.com/csstools/postcss-normalize
+[heroicon]: https://github.com/bharget/heroicon
 
 ## Heroku
 
@@ -172,6 +174,87 @@ for Lion (OS X 10.7) or Mountain Lion (OS X 10.8).
 PostgreSQL needs to be installed and running for the `db:create` rake task.
 
 Redis needs to be installed and running for Sidekiq
+
+---
+
+# Other generators
+
+As well as the main app generator, Tealeaves comes with a number of other generators
+for enabling/disabling features as required
+
+## Authentication
+
+If the app requires authentication, you can install it by running
+
+```bash
+rails g tealeaves:authentication
+```
+
+This will create a User model if one doesn't already exist, and setup the `Clearance`
+gem. As well as this, it will generate the default set of routes provided by Clearance,
+which includes
+
+- password reset
+- sign in and out
+- user management (configurable)
+- registration
+
+Please adjust these as needed.
+
+
+---
+
+# Project structure
+
+The resulting project is a standard Rails application, but comes pre-configured with
+a number of defaults. Below is an overview of the various features that come as standard,
+or as part of the other generators
+
+## Configuration (standard)
+
+When the app is generated, a configuration module and initializer is also setup. This
+should be used to any configuration, rather than directly referencing ENV variables
+for instance. As an example, a new app called `MyApp` will have the following files:
+
+```
+lib/my_app.rb
+config/initializers/000_my_app.rb
+```
+
+By default, the following configuration options are provided
+
+- host
+- email_from_address
+
+New options should be added into the `lib/my_app.rb` file, and can then be referenced in
+the initializer. For example, if you wanted to add a new option, you would add the following
+into the `lib/my_app.rb` file
+
+```ruby
+mattr_accessor :my_config_item
+@@my_config_item = <default value here>
+```
+
+And then use it in the initializer
+
+```
+MyApp.configure do |config|
+  ...
+  config.my_config_item = ENV.fetch("MY_CONFIG_VALUE", "default_value")
+end
+```
+
+## Styling
+
+The default styling of Tealeaves is built using TailwindCSS. It comes with a number of
+pre-built UI components, but everything can be customised. Each new project is setup
+with PostCSS as well as TailwindCSS, all of which can be configured with the following
+two files
+
+- postcss.config.js
+- tailwind.config.js
+
+Please see the documentation for these two projects for more information
 
 ## Issues
 

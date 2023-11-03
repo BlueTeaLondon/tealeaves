@@ -11,10 +11,14 @@ module Tealeaves
       copy_file "flashes_helper.rb", "app/helpers/flashes_helper.rb"
     end
 
+    def create_assets
+      copy_file "bluetea_logo.png", "app/assets/images/logo.png"
+    end
+
     def create_application_layout
       template "tealeaves_layout.html.erb.erb",
         "app/views/layouts/application.html.erb",
-        force: true
+        force: true 
     end
   end
 end
