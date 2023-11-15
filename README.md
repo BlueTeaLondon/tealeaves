@@ -237,6 +237,8 @@ By default, the following configuration options are provided
 
 - host
 - email_from_address
+- date_format
+- datetime_format
 
 New options should be added into the `lib/my_app.rb` file, and can then be referenced in
 the initializer. For example, if you wanted to add a new option, you would add the following

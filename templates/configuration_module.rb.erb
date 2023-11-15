@@ -11,6 +11,14 @@ module <%= app_name_module %>
   mattr_accessor :host
   @@host = nil
 
+  # The date format to use throughout the system
+  mattr_accessor :date_format
+  @@date_format = nil
+
+  # The date and time format to use throughout the system
+  mattr_accesor = :datetime_format
+  @@datetime_format = nil
+
 
   #
   # Configure the application. This module will be yielded

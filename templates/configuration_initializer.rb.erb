@@ -9,4 +9,6 @@ require "<%= app_name.underscore %>"
 <%= app_name_module %>.configure do |config|
   config.email_from_address = "noreply@<%= app_name.underscore %>.com"
   config.host = ENV.fetch("APPLICATION_HOST", "localhost:3000")
+  config.date_format = "%d/%m/%Y"
+  config.datetime_format = "%d/%m/%Y %H:%M"
 end
