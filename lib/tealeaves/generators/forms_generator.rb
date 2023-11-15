@@ -48,7 +48,7 @@ module Tealeaves
         imports
       )
 
-      copy_file "simple_form_i18n.yml", "config/locales/simple_form.en.yml"
+      copy_file "simple_form_i18n.yml", "config/locales/simple_form.en.yml", force: true
     end
 
     def configure_form_builders
