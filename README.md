@@ -1,7 +1,6 @@
 # Tealeaves
 
 [![Build Status](https://github.com/thoughtbot/tealeaves/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/thoughtbot/tealeaves/actions)
-[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
 TeaLeaves is the base Rails application used at
 [bluetea](https://tea.blue/).
@@ -102,7 +101,6 @@ Tealeaves also comes with:
 [binstub]: https://github.com/thoughtbot/tealeaves/pull/282
 [i18n]: https://github.com/thoughtbot/tealeaves/pull/304
 [circle]: https://circleci.com/docs
-[hound]: https://houndci.com
 [stylelint]: https://stylelint.io/
 [segment]: https://segment.com
 [autoprefixer]: https://github.com/postcss/autoprefixer
@@ -177,42 +175,13 @@ Redis needs to be installed and running for Sidekiq
 
 ---
 
-# Other generators
+# Generators
 
 As well as the main app generator, Tealeaves comes with a number of other generators
 for enabling/disabling features as required
 
-## Authentication
-
-If the app requires authentication, you can install it by running
-
-```bash
-rails g tealeaves:authentication
-```
-
-This will create a User model if one doesn't already exist, and setup the `Clearance`
-gem. As well as this, it will generate the default set of routes provided by Clearance,
-which includes
-
-- password reset
-- sign in and out
-- user management (configurable)
-- registration
-
-Please adjust these as needed.
-
-## Authorization
-
-If the app requires authorization for users, you can configure it
-by running
-
-```bash
-rails g tealeaves:authorization
-```
-
-Authorization is handled by the `action_policy` gem. It is very similar in its function
-to `Pundit` but provides additional functionality. It is very easy to swap out however.
-Full documentation on ActionPolicy can be found [here](https://actionpolicy.evilmartians.io)
+[Authetication](./docs/generators/authentication.md)
+[Authorization](./docs/generators/authorization.md)
 
 ---
 
@@ -222,53 +191,8 @@ The resulting project is a standard Rails application, but comes pre-configured 
 a number of defaults. Below is an overview of the various features that come as standard,
 or as part of the other generators
 
-## Configuration (standard)
-
-When the app is generated, a configuration module and initializer is also setup. This
-should be used to any configuration, rather than directly referencing ENV variables
-for instance. As an example, a new app called `MyApp` will have the following files:
-
-```
-lib/my_app.rb
-config/initializers/000_my_app.rb
-```
-
-By default, the following configuration options are provided
-
-- host
-- email_from_address
-- date_format
-- datetime_format
-
-New options should be added into the `lib/my_app.rb` file, and can then be referenced in
-the initializer. For example, if you wanted to add a new option, you would add the following
-into the `lib/my_app.rb` file
-
-```ruby
-mattr_accessor :my_config_item
-@@my_config_item = <default value here>
-```
-
-And then use it in the initializer
-
-```
-MyApp.configure do |config|
-  ...
-  config.my_config_item = ENV.fetch("MY_CONFIG_VALUE", "default_value")
-end
-```
-
-## Styling
-
-The default styling of Tealeaves is built using TailwindCSS. It comes with a number of
-pre-built UI components, but everything can be customised. Each new project is setup
-with PostCSS as well as TailwindCSS, all of which can be configured with the following
-two files
-
-- postcss.config.js
-- tailwind.config.js
-
-Please see the documentation for these two projects for more information
+[Configuration](https://github.com/bluetealondon/tealeaves/blob/master/docs/configuration.md)
+[Styling](https://github.com/bluetealondon/tealeaves/blob/master/docs/styling.md)
 
 ## Issues
 
