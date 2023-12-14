@@ -180,8 +180,11 @@ Redis needs to be installed and running for Sidekiq
 As well as the main app generator, Tealeaves comes with a number of other generators
 for enabling/disabling features as required
 
-[Authetication](./docs/generators/authentication.md)
-[Authorization](./docs/generators/authorization.md)
+- [Authentication](authentication) - Add user authentication and login/logout functionality
+- [Authorization](authorization) - Add a permission system to handle authorization
+
+[authentication]: ./docs/generators/authentication.md
+[authorization]: ./docs/generators/authorization.md
 
 ---
 
