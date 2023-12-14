@@ -194,8 +194,8 @@ The resulting project is a standard Rails application, but comes pre-configured 
 a number of defaults. Below is an overview of the various features that come as standard,
 or as part of the other generators
 
-[Configuration](https://github.com/bluetealondon/tealeaves/blob/master/docs/configuration.md)
-[Styling](https://github.com/bluetealondon/tealeaves/blob/master/docs/styling.md)
+- [Configuration](https://github.com/bluetealondon/tealeaves/blob/master/docs/configuration.md)
+- [Styling](https://github.com/bluetealondon/tealeaves/blob/master/docs/styling.md)
 
 ## Issues
 
