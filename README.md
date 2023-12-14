@@ -201,3 +201,50 @@ or as part of the other generators
 
 If you have problems, please create a
 [GitHub Issue](https://github.com/bluetealondon/tealeaves/issues).
+
+---
+
+# Future roadmap
+
+Tealeaves is a long way from complete, and will continue to evolve as we develop more and more projects.
+Below is a list of features that are planned to be developed and incorporated into Tealeaves
+
+- UI components:
+  - Layout 
+  - Panels
+  - Sidebars
+  - Slideouts
+  - Modals
+  - Forms
+
+- MS 365 and Google workspace:
+  - Calendar sync
+  - Email sync
+  - Contacts sync
+  - SSO
+
+- CRM features:
+  - Tasks
+  - Activities
+  - Leads
+  - Contacts
+  - Accounts
+  - Timeline/history for all the above
+
+- Tables:
+  - Sorting
+  - Filtering
+  - Searching
+  - Lazy loading
+
+- Reporting:
+  - Report builder UI
+  - Export as CSV
+  - Export as PDF
+
+- Dashboards:
+  - Use reports as basis for dashboards
+  - Charts and graphs
+
+- Permissions:
+  - Expand to allow customisation of permissions
