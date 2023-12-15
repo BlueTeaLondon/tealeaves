@@ -104,10 +104,6 @@ module Tealeaves
       inject_into_class "config/application.rb", "Application", config
     end
 
-    def configure_local_mail
-      copy_file "email.rb", "config/initializers/email.rb"
-    end
-
     def setup_asset_host
       replace_in_file "config/environments/production.rb",
         %(# config.asset_host = "http://assets.example.com"),

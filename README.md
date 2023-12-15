@@ -44,7 +44,6 @@ It includes application gems like:
 - [Rack Timeout](https://github.com/heroku/rack-timeout) to abort requests that are
   taking too long
 - [Rails healthcheck]() for adding a healthcheck endpoint
-- [Recipient Interceptor](https://github.com/croaky/recipient_interceptor) to
   avoid accidentally sending emails to real people from staging
 - [Simple Form](https://github.com/plataformatec/simple_form) for form markup
   and style
@@ -209,7 +208,7 @@ If you have problems, please create a
 Tealeaves is a long way from complete, and will continue to evolve as we develop more and more projects.
 Below is a list of features that are planned to be developed and incorporated into Tealeaves
 
-- UI components:
+- UI components (UI Kit gem?):
   - Layout 
   - Panels
   - Sidebars

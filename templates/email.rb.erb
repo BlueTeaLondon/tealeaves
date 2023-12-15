@@ -1,0 +1,19 @@
+# frozen_string_literal: true
+
+require "<%= app_name.underscore %>"
+
+if <%= app_name_module %>.smtp_configured?
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+    address: <%= app_name_module %>.smtp_address,
+    port: <%= app_name_module %>.smtp_port,
+    user_name: <%= app_name_module %>.smtp_username,
+    password: <%= app_name_module %>.smtp_password,
+    domain: <%= app_name_module %>.smtp_domain,
+    authentication: <%= app_name_module %>.smtp_authentication,
+    enable_starttls_auto: true
+  }
+elsif Rails.env.development?
+  ActionMailer::Base.delivery_method = :letter_opener
+end
+

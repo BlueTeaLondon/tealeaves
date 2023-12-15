@@ -11,4 +11,12 @@ require "<%= app_name.underscore %>"
   config.host = ENV.fetch("APPLICATION_HOST", "localhost:3000")
   config.date_format = "%d/%m/%Y"
   config.datetime_format = "%d/%m/%Y %H:%M"
+
+  # Configure the SMTP
+  config.smtp_address = ENV.fetch("SMTP_ADDRESS", nil)
+  config.smtp_domain = ENV.fetch("SMTP_DOMAIN", nil)
+  config.smtp_port = ENV.fetch("SMTP_PORT", nil)
+  config.smtp_username = ENV.fetch("SMTP_USERNAME", nil)
+  config.smtp_password = ENV.fetch("SMTP_PASSWORD", nil)
+  config.smtp_authentication = :login
 end

@@ -19,6 +19,26 @@ module <%= app_name_module %>
   mattr_accessor :datetime_format
   @@datetime_format = nil
 
+  #
+  # SMTP configuration
+  #
+  mattr_accessor :smtp_address
+  @@smtp_address = nil
+
+  mattr_accessor :smtp_port
+  @@smtp_port = 587
+
+  mattr_accessor :smtp_username
+  @@smtp_username = nil
+
+  mattr_accessor :smtp_password
+  @@smtp_password = nil
+
+  mattr_accessor :smtp_domain
+  @@smtp_domain = nil
+
+  mattr_accessor :smtp_authentication
+  @@smtp_authentication = :login
 
   #
   # Configure the application. This module will be yielded
@@ -31,5 +51,19 @@ module <%= app_name_module %>
   #
   def self.configure
     yield self
+  end
+
+  #
+  # Check to see if SMTP has been configured. This will be
+  # true if the address, username, password, or domain have
+  # been specified
+  #
+  def self.smtp_configured?
+    [
+      smtp_address,
+      smtp_username,
+      smtp_password,
+      smtp_domain,
+    ].any?(&:present?)
   end
 end
